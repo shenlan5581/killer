@@ -1,0 +1,23 @@
+
+
+
+
+1文件目录：
+     文件目录在配置文件path.
+
+     当需要添加显示的文件时需要:
+        (1)在index中创建div id = filename 
+        (2)在配置文件中加入目录 并在 handler的 View()函数中手动添加
+
+     DB 暂仅能够查看表及字段（鼠标悬停显示字段属性）
+
+用户登陆：只允许单用户登陆（注意 退出时需要signout 否则服务端不会销毁session，所以session有效期之内无法再次登陆
+                                          除非手动调用 app.php?action=signout
+                                          ）
+
+durpal nginx rewrite（ 配置文件nginx官网   https://www.nginx.com/resources/wiki/start/topics/recipes/drupal/   ） 
+          本地环境添加主机名 文件：  /etc/hosts   (需重启）
+          drupal admin 无法访问（数据库配置？？？？）
+
+
+ 
