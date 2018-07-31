@@ -16,12 +16,17 @@ $conf = array(
         'pwd'   =>'k',   
      ),
      'path'=>array(
-        'ctrl'             =>$baseDIR.'/yunzhe/sites/app/controller',
-        'model'         =>$baseDIR.'/yunzhe/sites/app/model',
-        'view'           =>$baseDIR.'/yunzhe/sites/app/view/template',
-        'template'      =>$baseDIR.'/killer/template',
-        'MD'              =>$baseDIR.'/killer/src/MD',
+          'ctrl'             =>$baseDIR.'/yunzhe/sites/app/controller',
+          'model'         =>$baseDIR.'/yunzhe/sites/app/model',
+          'view'           =>$baseDIR.'/yunzhe/sites/app/view/template',
+          'template'      =>$baseDIR.'/killer/template',
+          'MD'              =>$baseDIR.'/killer/src/MD',
      ),
+    'parse'=>array(
+            'parsename'=> 'Drupal',
+         //   'ctr_pre'=>'App_Controller_'      //控制器类名前缀
+     ),
+
 );
 
 ?>

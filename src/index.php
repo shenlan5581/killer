@@ -40,40 +40,43 @@
 <!--文件夹列表-->
 <div id="project">
       <div id="ctrl"class="item" > CONTROLLER
-            <a href="#" onclick=add_dir('ctrl') class="a2">+</a>
+            <a href="#" onclick=add('ctrl','dir') class="a2">+</a>
       </div> 
      <div id="model" class="item">MODLE 
-            <a href="#" onclick=add_dir('model') class="a2">+</a>
+            <a href="#" onclick=add('model','dir') class="a2">+</a>
       </div>
      <div id="view" class="item">VIEW 
-            <a href="#" onclick=add_dir('view') class="a2">+</a>
+            <a href="#" onclick=add('view','dir') class="a2">+</a>
       </div>
      <div id="db"class="item">DB <a href="#" class="a2">+</a>
      </div>
+     <div id="template"class="item">TEMPLATE
+            <a href="#" onclick=add('template','dir') class="a2">+</a>
+      </div>
 
 </div>
-<!-- 编辑器 -->
-         <!-- 编辑器ctrl  new -->
-             <div id ='edit_ctr_new' > 
-                        <span class ='span2' >Name</span> 
-                              <input class ='input2'  onchange= edit_ctr_name_change()  type='text'></input> <br>                
-                        <span class ='span2'> Action</span>
-                               <input class ='input2'  type='text'></input> <a href="#ai"  onclick =edit_ctr_action_add() class = 'a2' >+</a><br>
-                        <span class ='span2'> Descriptor</span>
-                               <input class ='input2'  type='text'></input> 
-                        <br>
+
+
+
+<!--隐藏窗口  编辑器 -->
+         <!-- 编辑器ctrl new -->
+             <div id ='edit_ctr' > 
+                        <span class ='span2' >New Name</span><br> 
+                              <input class ='input3'  onchange= edit_ctr_name_change()  type='text'></input> <br>                
+                        <span class ='span2'>Addition Action</span><br>
+                               <input class ='input3'  type='text'></input> <a href="#ai"  onclick =edit_ctr_action_add() class = 'a2' >+</a><br>
                    <div id = 'edit_ctr_desc'> <!-- ctr 描述 -->
                         <a class = 'a4' > CTRL NAME:</a>
                         <span id ='edit_ctr_desc_name'>
                         </span><br>
                         <a class = 'a4' > ACTION LIST:</a><br>
-                                <textarea id = 'edit_ctr_desc_action'> 
-                                      <!--记录 action list -->
-                                </textarea>
+                        <div id = 'edit_ctr_desc_actionlist' class = 'dir_node border03'>
+                              <!-- action list -->
+                        </div>
                  </div>
-                 <a href="#ai"  class = 'a2' onclick = new_file_submit()    >OK</a>
-                 <a href="#ai"  class = 'a2' onclick = ctr_reset()              >RESET</a>
-                 <a href="#ai"  class = 'a2' onclick = newfilecancel()       >CANCEL</a>
+                 <div style="text-align:center">
+                 <a href="#ai"  class = 'a2' onclick = edit_ctr_cancel()>CANCEL</a>
+                 </div>
             </dir>
    <!--     <div id = "E_action" class ="border02 edit"> ACTION<br>
                 <toolbar>
@@ -94,22 +97,20 @@
            TEMPLATE 
         </div> -->
     </div>  
-<!--   模板   -->
-     <div id="template"class="item">TEMPLATE
-            <a href="#" onclick=add_dir('template') class="a2">+</a>
-      </div>
 
 </div>
 <br> 
-<!-- 隐藏窗口-->
-<div id = "newdir" >NEW DIR<br>
-     <input id ="newdirinput" value ="新文件夹"> </input>
-     <input id ="newdirinputpath" type =' hidden' value =""> </input>
-     <a href="#ai" class ='a1' onclick = newdirsubmit();>OK</a>
-     <a href="#ai" class ='a1' onclick = newdircancel();>CANCEL</a>
+
+
+
+
+<!-- 隐藏窗口  创建新文件 -->
+<div id = "new" > NEW<br> 
+     <input id ="newinput"  class ='input3'   required="required"  value ="新文件"> </input><br>
+     <a href="#ai" class ='a1' onclick = newsubmit();>OK</a>
+     <a href="#ai" class ='a1' onclick = newcancel();>CANCEL</a>
 </div>
-
-
+ 
 
 
 

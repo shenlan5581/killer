@@ -1,11 +1,17 @@
 /*
-*   初始化相关
+*    初始化 并创建 文件节点，数据库节点  相关函数 (在登陆成功后）
 */
-$(document).ready(function () {
-    load_md();
 
+/**  Initialize  **/
+//global
+var id = 0;  //global id
+
+$(document).ready(function () {
+    closeF5();
+    load_md();
 });
-var id = 0;
+/*  向后台请求数据 文件目录，路径，数据库信息 并生成元素节点
+*/
 function Init() {
     $.ajax({
         type: 'get',
@@ -29,22 +35,22 @@ function Init() {
 /*
 *  文件递归函数
 */
-function draw(Nid,node,type){   //文件名 节点   Nname:要添加的节点名
-      var file_type=type;// 用来记录当前文件类型例如文件或者文件夹 是 控制器或者模型视图
+function draw(Nid,node,M_name){   //文件名 节点   Nname:要添加的节点名
+      var file_type=M_name;// 用来记录当前文件类型例如文件或者文件夹 是 控制器或者模型视图
     $.each(node, function (Fname, item) {   // 
            id++;
            var Fid =id;
         if (item.type == "dir") {
-               insert_new_dir(Fid,item.path,Fname,Nid,file_type);
+               insert_new_dir(Fid,item.path,Fname,Nid,M_name);
                draw( "C_"+Fid,item.child,file_type);
         }
         if (item.type == "file") {
-            insert_new_file(Fid,item.path,Fname,Nid,file_type ) ;
+            insert_new_file(Fid,item.path,Fname,Nid,M_name) ;
         } 
     });
 }
-/*  建立数据库表 
-*/
+
+//建立数据库表 
 function db(Nid,node){
        $.each(node,function(index,item){  //表
              var Did = index+(id++);
@@ -63,14 +69,15 @@ function db(Nid,node){
              })
        })
 }
-/* 为几个根文件目录添加路径
-*/
+
+//为几个根文件目录添加路径
 function  SetRootPath(path){       //设置几个根文件路径
    $.each(path,function(index,item){  // 字段
          html="<span id = 'P_"+index+"'  style='display:none'>"+item+"</span>";
          $("#"+index).append(html);
     })
 }
+
 // 当鼠标悬停时显示字段信息
 function show_db_word(id){
 $("#"+id).css({                  });
@@ -94,4 +101,15 @@ function load_md(){
             }
         }
     })// ajax end
+}
+
+// 禁用刷新
+function closeF5(){
+    document.oncontextmenu=function(){return false;}
+    document.onkeydown=function(event){
+    var e = event || window.event || arguments.callee.caller.arguments[0];
+    if(e && e.keyCode==116){
+    return false;
+    }
+    } 
 }

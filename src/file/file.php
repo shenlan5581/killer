@@ -39,6 +39,22 @@
         return false;
     }
 }
+   // 创建文件
+   public function add_file($path,$name){
+   // $dir = iconv("UTF-8", "GBK", $path."/".$dir);
+    $file =$path."/".$name; 
+    if(!file_exists($file)){
+        $myfile = fopen($file, "w"); 
+        if($myfile){
+          fclose($myfile);
+          return true;
+        } else{
+         return false;
+        }
+    }  else {
+        return false;
+    }
+}
    // 读取文件内容
   public function file_read($path){
          if( $file = fopen($path,"r")) {

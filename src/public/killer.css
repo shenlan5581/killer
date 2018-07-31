@@ -34,11 +34,19 @@ a{
     color:rgb(107, 183, 255);
 }
 .a3{
-    color:rgb(223, 107, 134);
+    color:rgb(247, 71, 71);
 }
 .a4{
     font-size: 8px;
-    color:rgb(219, 139, 48);
+    color:rgb(245, 146, 41);
+}
+.a5{
+    font-size:10px;
+    color:rgb(111, 162, 185);
+}
+.a6{
+    font-size:10px;
+    color:rgb(150, 150, 150);
 }
 #action{ 
     width:300px;
@@ -80,6 +88,7 @@ toolbar{
  
 }
 textarea{
+    width:180px;
     text-align: left;
     background-color: rgba(34, 37, 39, 0.829);
     font-size:10px;
@@ -118,14 +127,16 @@ input{
 }
 .input2{
   width:100px; margin:2px;
-
+}
+.input3{
+  width:240px;  
+  display: inline-block;
 }
 
-/*隐藏*/
-#newdir{
+/*隐藏  新文件或文件夹*/
+#new{
     text-align: center;
-    position: fixed; 
-    width:220px;
+    position: absolute; 
     padding:12px;
     background-color: rgba(41, 45, 48, 0.884);
     color:rgb(194, 194, 194);
@@ -147,6 +158,12 @@ input{
     border-style:solid;
     border-width: 1px;
     border-color: rgb(48, 47, 47);
+    border-radius:5px; 
+}
+.border03{
+    border-style:solid;
+    border-width: 1px;
+    border-color: rgb(117, 117, 117);
     border-radius:5px; 
 }
 toolbar{

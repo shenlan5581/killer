@@ -24,7 +24,7 @@
        $data['file']['ctrl']         =$ctrl;           
        $data['file']['model']     =$model;   
        $data['file']['view']       =$view;   
-       $data['file']['template']  = $template;        
+       $data['file']['template']  =$template;        
        $data['DB']                  =$mysql;
        $data['path']                = $conf['path'];
        return $data;
@@ -65,11 +65,17 @@ class A_del extends handler{
        }
     }
 }
-class A_newdir extends handler{
+class A_new extends handler{
      public function perform(){
        $path = $_GET['path'];
        $name =$_GET['name'];
+       $type  =$_GET['type']; 
+
+       if($type == 'dir'){
        $ret = $this->file->add_dir($path,$name);
+       } else if($type == 'file'){
+        $ret = $this->file->add_file($path,$name);
+       }
        if($ret){
            $this->json->Json("success!");
        } else {
@@ -78,6 +84,18 @@ class A_newdir extends handler{
     }
 }
 
+class A_E_ctr extends handler{
+     public function perform(){
+       $path = $_GET['path'];
+       $ctrl = new ctrl($path);
+       $data =$ctrl->GetJson();
+       if($data){
+           $this->json->Json("success!",$data);
+       } else {
+           $this->json->Json("failed!",null,false);
+       }
+     }
+}
 
 
 
