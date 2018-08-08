@@ -20,22 +20,18 @@
 <h3   id ='title' onmousedown=drag('title',event) > K-KILLER</h3>
 <div id = "status"> <span id ="response">WELCOME</span>
 <a class='a1'   href = "#ai" id='signin' onclick=display_signin()>SIGNIN</a>
-<div id='signin_tb' class ='signin broder02'>请输入用户名和密码 <br>
-     <input type='text' id='signin_tb_user' value ='USER NAME'></input><br>
-     <input type='text' id='signin_tb_pwd' value='PASSWORD'></input><br>
-     <a href ='#ai' class ='a1'  onclick=signin_commit() >COMMIT </a>
-     <a href ='./app.php?action=signout'class ='a1' >如果重复登陆点击这里 </a>
+      <div id='signin_tb' class ='signin broder02'>请输入用户名和密码 <br>
+            <input type='text' id='signin_tb_user' value ='USER NAME'></input><br>
+            <input type='text' id='signin_tb_pwd' value='PASSWORD'></input><br>
+            <a href ='#ai' class ='a1'  onclick=signin_commit() >COMMIT </a>
+            <a href ='./app.php?action=signout'class ='a1' >如果重复登陆点击这里 </a>
+      </div>
 </div>
-</div>
-
-
 
 <!--描述-->
 <pre>
 <div id="desc"> DESCRIPTOR :  </div>
 </pre>
-
-
 
 <!--文件夹列表-->
 <div id="project">
@@ -53,10 +49,7 @@
      <div id="template"class="item">TEMPLATE
             <a href="#" onclick=add('template','dir') class="a2">+</a>
       </div>
-
 </div>
-
-
 
 <!--隐藏窗口  编辑器 -->
          <!-- 编辑器ctrl new -->
@@ -64,7 +57,7 @@
                         <span class ='span2' >New Name</span><br> 
                               <input class ='input3'  onchange= edit_ctr_name_change()  type='text'></input> <br>                
                         <span class ='span2'>Addition Action</span><br>
-                               <input class ='input3'  type='text'></input> <a href="#ai"  onclick =edit_ctr_action_add() class = 'a2' >+</a><br>
+                               <input class ='input3' type='text'></input> <a href="#ai"  onclick =edit_ctr_action_add() class = 'a2' >+</a><br>
                    <div id = 'edit_ctr_desc'> <!-- ctr 描述 -->
                         <a class = 'a4' > CTRL NAME:</a>
                         <span id ='edit_ctr_desc_name'>
@@ -101,18 +94,12 @@
 </div>
 <br> 
 
-
-
-
 <!-- 隐藏窗口  创建新文件 -->
 <div id = "new" > NEW<br> 
      <input id ="newinput"  class ='input3'   required="required"  value ="新文件"> </input><br>
      <a href="#ai" class ='a1' onclick = newsubmit();>OK</a>
      <a href="#ai" class ='a1' onclick = newcancel();>CANCEL</a>
 </div>
- 
-
-
 
 </body>
 </html>

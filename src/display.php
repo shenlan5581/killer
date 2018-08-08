@@ -7,6 +7,7 @@ class display {
        $arr['msg'] =$msg ;
        $arr['data'] =$data ;
        $arr['status'] =$status ;
+       $arr['ec']=200;
        echo json_encode($arr);       
    }
 }

@@ -1,0 +1,16 @@
+<?php
+
+
+
+class App_controller_shopController{
+
+       public function GetShopListAction(){
+
+       }
+
+
+ 
+
+
+
+}

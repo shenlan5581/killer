@@ -1,20 +1,19 @@
 /*** 编辑器** */
 
 //global
-var EditType;
-var EditPath;   
-
+var Edit_Ctr_Type;
+var Edit_Ctr_Path;   
 // 显示编辑器
 function edit(type,Nid){
-    EditType = type;
-    EditPath =$("#P_"+Nid).html();
+    Edit_Ctr_Type = type;
+    Edit_Ctr_Path =$("#P_"+Nid).html();
     var x =  $('#'+Nid).offset().top+30;
     var y =  $('#'+Nid).offset().left+10;
     //现实相应编辑器
     if(type== 'ctrl'){
             ctr_reset();
             $("#edit_ctr").css({'top':x,'left':y});
-            load_ctr(EditPath);
+            load_ctr(Edit_Ctr_Path);
             $("#edit_ctr").fadeIn();
     return;
     } 
@@ -24,8 +23,6 @@ function edit(type,Nid){
       alert(type);
     } 
 }
- 
-
 
 /*ctr*/
 //加载信息
@@ -53,13 +50,32 @@ function load_ctr(path){
 //动态改变控制器描述中的名称
 function edit_ctr_name_change() {
     var c_name  = $('#edit_ctr input  ').eq(0).val();
-    $('#edit_ctr_desc_name').html(c_name);
-    $('#edit_ctr input  ').eq(0).val('');
+    $.ajax({
+        type: 'get',
+        url: './app.php',
+        data: { 'action': 'E_ctr_change_name',
+                   'path':Edit_Ctr_Path,
+                   'name':c_name
+                },
+        success: function (result) {
+            var json = JSON.parse(result);
+                if(json.status ==true){ 
+                    $('#edit_ctr_desc_name').html(c_name);
+                    $('#edit_ctr input  ').eq(0).val('');
+                 } else{
+                    $("#response").html(json.msg);
+              }
+            }
+    })// ajax end
 }
 //动态添加action list
 function edit_ctr_action_add() {
     var c_name  = $('#edit_ctr input  ').eq(1).val();
-    var html = "<a href='#ai'  class ='a6' >"+c_name+" </a><br>";
+    if(c_name == ''){
+      $("#response").html('请输入新名称');
+      return 
+    }
+    var html = "<a href='#ai'  class ='a6' >"+c_name+" </a>  <a href='#ai'  class ='a3' >-</a> <br>";
     $('#edit_ctr_desc_actionlist').append(html);
     $('#edit_ctr input  ').eq(1).val('');
 }
@@ -73,6 +89,13 @@ function ctr_reset(){
      $("#edit_ctr_desc_name").html(' ');
      $("#edit_ctr_desc_actionlist").empty();
 }
+//为某个actio_list 添加 action(js)
+function insert_action_at_list(){
+
+
+}
+
+/*
 function edit_ctr_submit(){
     var c_name = $("#edit_ctr_desc_name").html();
     var a_list    =  $("#edit_ctr_desc_actionlist").val();
@@ -93,7 +116,7 @@ function edit_ctr_submit(){
               }
             }
     })// ajax end
-}
+}*/
    
 
 

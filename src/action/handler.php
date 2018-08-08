@@ -1,6 +1,7 @@
 <?php
-/* 操作接口
-*
+/*       操作接口: 
+*        handler 类 为所有操作的基类 提供了一些基本内置对象
+*        其子类为某个具体的操作实例 由 action 对象创建并调用
 */
 
  class handler{
@@ -11,7 +12,7 @@
    public function __construct(){
         $this->DB   =   new  mysql();
         $this->file   =   new  file();
-        $this->json  =  new display();
+        $this->json  =  new  display();
    }
    public function View(){
        global $conf;
@@ -37,7 +38,7 @@ class A_Init extends handler{
         $this->json->Json("Initialize success",$data);
     }
 }
-// 说明文档
+//说明文档
 class A_MD extends handler{
      public function perform(){
        global $conf;
@@ -65,6 +66,7 @@ class A_del extends handler{
        }
     }
 }
+//添加新文件或者文件夹
 class A_new extends handler{
      public function perform(){
        $path = $_GET['path'];
@@ -83,12 +85,12 @@ class A_new extends handler{
        }
     }
 }
-
+//获取控制器文件信息
 class A_E_ctr extends handler{
      public function perform(){
        $path = $_GET['path'];
-       $ctrl = new ctrl($path);
-       $data =$ctrl->GetJson();
+       $ctrl = new ctrl();
+       $data =$ctrl->Get_Ctr_Info($path);
        if($data){
            $this->json->Json("success!",$data);
        } else {
@@ -96,7 +98,36 @@ class A_E_ctr extends handler{
        }
      }
 }
+//更改控制器名称
+class A_E_ctr_change_name extends handler{
+     public function perform(){
+       $path = $_GET['path'];
+       $name = $_GET['name'];
+       $ctrl = new ctrl($path);
+       $ret=$ctrl->change_name($path,$name);
+       if($ret){
+           $this->json->Json("success!",$data);
+       } else {
+           $this->json->Json("failed!",null,false);
+       }
+     }
+}
 
+
+
+
+
+
+
+
+
+
+//更改控制器名称(apicoud 测试）
+class A_appcloud extends handler{
+    public function perform(){
+         $this->json->Json("test success!",$data);
+    }
+}
 
 
 

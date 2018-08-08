@@ -69,27 +69,31 @@
         fclose($file);
         return false;
    }
+   //改变文件某部分内容 
+ //1路径2旧内容3新内容4偏移量
+  public function file_change_str($path,$o_str,$n_str,$seek){
+         if( $file = fopen($path,"r+")) {
+             fseek($file,$seek);
+             //pause
+         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   }
+   // 文件写入
+   //1路径2内容3偏移量
+  public function file_write($path,$str,$seek){
+         if( $file = fopen($path,"r")) {
+             $content = fread($file,filesize($path));
+         } else {
+            return false;
+         }
+        if($content) {
+          fclose($file);
+           return $content;
+        }
+        fclose($file);
+        return false;
+   }
+   
 /*
 *  递归创建 文件列表
 */
